@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit Form</title>
+</head>
+<body>
+    <h2>Enter Race Details</h2>
+    <form id="raceForm">
+        <label for="year">Year:</label>
+        <input type="text" id="year" name="year"><br><br>
+        
+        <label for="round">Round:</label>
+        <input type="text" id="round" name="round"><br><br>
+        
+        <label for="date">Weather:</label>        
+        <select id="weather" name="weather">
+            <option value="sunny">Warm </option>
+            <option value="cold">Cold </option>
+            <option value="wet">Wet </option>
+            <option value="dry">Dry </option>
+            <option value="cloudy">Cloudy </option>
+        </select><br><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+        <!-- <label for="circuit">Circuit:</label>
+        <select id="circuit" name="circuit">
+            <option value="Albert Park Grand Prix Circuit">Albert Park Grand Prix Circuit</option>
+            <option value="Autodromo Enzo e Dino Ferrari">Autodromo Enzo e Dino Ferrari</option>
+            <option value="Autodromo Internazionale del Mugello">Autodromo Internazionale del Mugello</option>
+            <option value="Autodromo Nazionale di Monza">Autodromo Nazionale di Monza</option>
+            <option value="Autódromo Hermanos Rodríguez">Autódromo Hermanos Rodríguez</option>
+            <option value="Autódromo Internacional do Algarve">Autódromo Internacional do Algarve</option>
+            <option value="Autódromo José Carlos Pace">Autódromo José Carlos Pace</option>
+            <option value="Bahrain International Circuit">Bahrain International Circuit</option>
+            <option value="Baku City Circuit">Baku City Circuit</option>
+            <option value="Buddh International Circuit">Buddh International Circuit</option>
+            <option value="Circuit Gilles Villeneuve">Circuit Gilles Villeneuve</option>
+            <option value="Circuit Park Zandvoort">Circuit Park Zandvoort</option>
+            <option value="Circuit Paul Ricard">Circuit Paul Ricard</option>
+            <option value="Circuit de Barcelona-Catalunya">Circuit de Barcelona-Catalunya</option>
+            <option value="Circuit de Monaco">Circuit de Monaco</option>
+            <option value="Circuit de Nevers Magny-Cours">Circuit de Nevers Magny-Cours</option>
+            <option value="Circuit de Spa-Francorchamps">Circuit de Spa-Francorchamps</option>
+            <option value="Circuit of the Americas">Circuit of the Americas</option>
+            <option value="Fuji Speedway">Fuji Speedway</option>
+            <option value="Hockenheimring">Hockenheimring</option>
+            <option value="Hungaroring">Hungaroring</option>
+            <option value="Indianapolis Motor Speedway">Indianapolis Motor Speedway</option>
+            <option value="Istanbul Park">Istanbul Park</option>
+            <option value="Jeddah Corniche Circuit">Jeddah Corniche Circuit</option>
+            <option value="Korean International Circuit">Korean International Circuit</option>
+            <option value="Las Vegas Strip Street Circuit">Las Vegas Strip Street Circuit</option>
+            <option value="Losail International Circuit">Losail International Circuit</option>
+            <option value="Marina Bay Street Circuit">Marina Bay Street Circuit</option>
+            <option value="Miami International Autodrome">Miami International Autodrome</option>
+            <option value="Nürburgring">Nürburgring</option>
+            <option value="Red Bull Ring">Red Bull Ring</option>
+            <option value="Sepang International Circuit">Sepang International Circuit</option>
+            <option value="Shanghai International Circuit">Shanghai International Circuit</option>
+            <option value="Silverstone Circuit">Silverstone Circuit</option>
+            <option value="Sochi Autodrom">Sochi Autodrom</option>
+            <option value="Suzuka Circuit">Suzuka Circuit</option>
+            <option value="Valencia Street Circuit">Valencia Street Circuit</option>
+            <option value="Yas Marina Circuit">Yas Marina Circuit</option>
+        </select><br><br> -->
+        
+        
+    </form>
+
+    <script>
+        function submitForm() {
+            var year = document.getElementById("year").value;
+            var round = document.getElementById("round").value;
+            var weather = document.getElementById("weather").value;
+
+            // Construct the data object
+            var data = {
+                year: year,
+                round: round,
+                weather: weather
+            };
+            
+            // Make a POST request to the endpoint
+            fetch('https://yk8r1hcx9f.execute-api.us-east-1.amazonaws.com/default/testing-phase', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                // Optionally, handle success response here
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                // Optionally, handle error here
+            });
+        }
+    </script>
+</body>
+</html>
